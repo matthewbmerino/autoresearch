@@ -1,0 +1,21 @@
+commit	val_bpb	memory_gb	status	description
+0635a47	1.113581	6.8	keep	baseline (RTX 3090 tuned)
+d68118d	1.110774	12.9	keep	increase depth=8 batch=48 use more VRAM
+0bb68b1	1.122447	16.7	discard	increase aspect_ratio=64 wider model
+13aecdb	1.114865	12.9	discard	increase matrix_lr to 0.06
+06c795a	1.114774	12.9	discard	reduce warmdown_ratio to 0.3
+19c2383	1.114832	12.9	discard	add 5pct warmup
+dab8848	1.112545	12.9	discard	change window pattern to SSL
+9d2337e	1.270262	20.5	discard	phase1: depth=10 aspect=48 (dim=512)
+6751de5	1.129076	15.7	discard	phase1: depth=10 aspect=38 (dim=384 same width deeper)
+237a4ed	1.128643	17.1	discard	phase1: batch=64 more throughput same model
+1a55003	1.129185	12.5	discard	phase2: remove value embeddings (depth=8)
+7de774b	1.978523	29.1	discard	phase2: depth=12 no VE (OOM-level)
+06be4ea	1.134501	15.2	discard	phase2: depth=10 aspect=38 no VE
+43ef022	1.108092	12.9	keep	phase3: SwiGLU MLP replaces ReLU-squared
+923a4fc	1.115427	12.9	discard	phase4: cosine decay schedule
+0160c13	1.114446	12.9	discard	phase4: softcap 15->30
+acd70ee	1.104259	12.9	keep	phase4: shorter sliding window seq//4
+e1a9a88	1.109496	12.9	discard	phase5: head_dim=64 (6 heads)
+8c8c707	1.103256	14.0	keep	phase5: post-norm hybrid (Gemma 2 style)
+9c4ee17	1.100633	13.5	keep	phase5: remove x0 residual shortcut (simpler+better)
